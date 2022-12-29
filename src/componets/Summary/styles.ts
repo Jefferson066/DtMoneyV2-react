@@ -33,6 +33,7 @@ export const SummaryCard = styled.div<SummaryCardprops>`
         display: flex;
         margin-top: 1rem;
         font-size: 2rem;
+        justify-content: space-between;
     }
 
     strong {
