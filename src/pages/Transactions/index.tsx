@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Header } from "../../componets/Header";
 
 import { Summary } from "../../componets/Summary";
 import { TransactionContext } from "../../contexts/TransactionContext";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 import { SearchForm } from "./components/SearchForm";
 import {
     PriceHighlight,
@@ -32,11 +33,12 @@ export function Transactions() {
                                         <PriceHighlight
                                             variant={transaction.type}
                                         >
-                                            {transaction.price}
+                                            {transaction.type === 'outcome' && '- '}
+                                            {priceFormatter.format(transaction.price)}
                                         </PriceHighlight>
                                     </td>
                                     <td>{transaction.category}</td>
-                                    <td>{transaction.createAt}</td>
+                                    <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
                                 </tr>
                             );
                         })}
